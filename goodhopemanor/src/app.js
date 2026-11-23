@@ -5,7 +5,7 @@ const path=require('node:path');
 const crypto=require('node:crypto');
 const {loadConfig}=require('./config');
 const {openDatabase,ROLES,CATEGORIES}=require('./database');
-const {sha256,randomToken,strongPassword,hashPassword,verifyPassword,cookie,getCookie,sanitizeText,sameOrigin}=require('./security');
+const {sha256,randomToken,strongPassword,hashPassword,verifyPassword,cookie,getCookie,clientIp,sanitizeText,sameOrigin}=require('./security');
 const {parseMultipart,processUpload,UploadError}=require('./uploads');
 const {json,headers,serveStatic}=require('./responses');
 const {sendInvitation}=require('./email');
@@ -78,7 +78,7 @@ function createServer(config,store){
   }
   function getUserPublic(u){return {id:u.id,username:u.username,email:u.email,role:u.role,disabled:!!u.disabled,mustChangePassword:!!u.must_change,createdAt:u.created_at};}
   function rateLimit(req,username){
-    const ip=req.socket.remoteAddress||'unknown',t=Date.now();
+    const ip=clientIp(req,config.trustProxyHops),t=Date.now();
     const keys=[[`ip:${ip}`,30],[`user:${ip}:${String(username).toLowerCase().slice(0,70)}`,6]];
     let blocked=false;
     for(const [key,max] of keys){
@@ -89,18 +89,22 @@ function createServer(config,store){
     if(attempts.size>2000){for(const [key,value] of attempts){if(value.at(-1)<t-15*60000)attempts.delete(key);}}
     return blocked;
   }
-  function clearRate(req,username){attempts.delete(`user:${req.socket.remoteAddress||'unknown'}:${String(username).toLowerCase().slice(0,70)}`);}
-  function sendFile(req,res,d,version){
+  function clearRate(req,username){attempts.delete(`user:${clientIp(req,config.trustProxyHops)}:${String(username).toLowerCase().slice(0,70)}`);}
+  async function sendFile(req,res,version){
     if(!version)return json(res,config,404,{error:'Document version not found'});
     const file=path.join(config.storageDir,version.stored_name);
-    if(!fs.existsSync(file))return json(res,config,404,{error:'Document file unavailable'});
-    const stat=fs.statSync(file);if(stat.size!==version.file_size)return json(res,config,503,{error:'Document integrity verification required'});
-    const fileHash=crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
-    if(fileHash!==version.file_sha256)return json(res,config,503,{error:'Document integrity verification required'});
+    let stat;
+    try{stat=await fs.promises.stat(file);}catch{return json(res,config,404,{error:'Document file unavailable'});}
+    if(!stat.isFile())return json(res,config,404,{error:'Document file unavailable'});
+    if(stat.size!==version.file_size)return json(res,config,503,{error:'Document integrity verification required'});
+    // Hash in chunks so a large file never sits whole in memory or blocks other requests.
+    const hash=crypto.createHash('sha256');
+    for await(const chunk of fs.createReadStream(file))hash.update(chunk);
+    if(hash.digest('hex')!==version.file_sha256)return json(res,config,503,{error:'Document integrity verification required'});
     // All download responses are attachments: browser does not execute active Office/PDF content in our origin.
     const safe=version.original_name.replace(/[^a-z0-9 ._\-]/gi,'_').replace(/"/g,'_');
     headers(res,config,{'Content-Type':'application/octet-stream','Content-Disposition':`attachment; filename="${safe}"`,'Content-Length':stat.size,'X-Download-Options':'noopen'});
-    res.writeHead(200);if(req.method==='HEAD')return res.end();fs.createReadStream(file).pipe(res);
+    res.writeHead(200);if(req.method==='HEAD')return res.end();fs.createReadStream(file).on('error',()=>res.destroy()).pipe(res);
   }
   const server=http.createServer(async(req,res)=>{
     const requestStart=Date.now();
@@ -174,7 +178,7 @@ function createServer(config,store){
       const guestDl=/^\/api\/documents\/([0-9a-f-]{36})\/download$/i.exec(pathname);
       if((req.method==='GET'||req.method==='HEAD')&&guestDl){
         const d=statements.documentById.get(guestDl[1]);if(!d||!publicEligible(d))return json(res,config,404,{error:'Document not available'});
-        return sendFile(req,res,d,statements.currentVersion.get(d.id,d.current_version));
+        return await sendFile(req,res,statements.currentVersion.get(d.id,d.current_version));
       }
       if(req.method==='GET'&&pathname==='/api/admin/documents'){
         if(!authorize(req,res,ROLES))return;
@@ -239,7 +243,7 @@ function createServer(config,store){
       if((req.method==='GET'||req.method==='HEAD')&&adminDl){
         if(!authorize(req,res,ROLES))return;
         const doc=statements.documentById.get(adminDl[1]);if(!doc)return json(res,config,404,{error:'Document not found'});
-        const version=statements.currentVersion.get(doc.id,Number(adminDl[2]));return sendFile(req,res,doc,version);
+        const version=statements.currentVersion.get(doc.id,Number(adminDl[2]));return await sendFile(req,res,version);
       }
       const uploadVersion=/^\/api\/admin\/documents\/([0-9a-f-]{36})\/versions$/i.exec(pathname);
       if(req.method==='POST'&&(pathname==='/api/admin/documents'||uploadVersion)){

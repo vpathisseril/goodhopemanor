@@ -33,6 +33,7 @@ Set secrets and deployment variables through your hosting provider, **not in the
 | `AV_SCANNER` | Absolute path to installed, maintained executable such as ClamAV `clamscan` |
 | `INITIAL_ADMIN_PASSWORD` | One-time private 14+ character bootstrap password; only required if no accounts exist |
 | `INITIAL_ADMIN_EMAIL` | Owner-designated administrator email (defaults to facility contact) |
+| `TRUST_PROXY_HOPS` | Number of trusted reverse proxies in front of the app (`1` on Replit and most hosts; `0`, the default, when reached directly). Without it, login rate limiting sees every visitor as the proxy's address |
 | `EMAIL_PROVIDER` | Optional: `sendgrid` |
 | `SENDGRID_API_KEY` / `FROM_EMAIL` | Optional, needed for automatic staff invitation emails |
 

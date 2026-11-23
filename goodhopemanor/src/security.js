@@ -31,9 +31,19 @@ function securityHeaders(production=false){return {
 };}
 function cookie(sid,production,maxAge=1800){return `ghm_sid=${sid}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${maxAge}${production?'; Secure':''}`;}
 function getCookie(req){const entry=(req.headers.cookie||'').split(';').find(x=>x.trim().startsWith('ghm_sid='));return entry?entry.trim().slice(8):'';}
+// Each trusted reverse proxy appends the address it received the request from, so with N trusted
+// proxies the real client is the Nth X-Forwarded-For entry from the right. Entries further left are
+// supplied by the client and can be forged, so they are never used.
+function clientIp(req,trustProxyHops=0){
+  const socketIp=req.socket.remoteAddress||'unknown';
+  if(!trustProxyHops)return socketIp;
+  const chain=String(req.headers['x-forwarded-for']||'').split(',').map(part=>part.trim()).filter(Boolean);
+  if(!chain.length)return socketIp;
+  return chain[Math.max(0,chain.length-trustProxyHops)];
+}
 function sanitizeText(input,max=180){return typeof input==='string'?input.trim().slice(0,max):'';}
 function safeFilename(input){return sanitizeText(input,160).replace(/[\\/\u0000-\u001f\u007f"\r\n]/g,'_').replace(/[^a-zA-Z0-9._\- ]/g,'_').replace(/^\.+/,'file').slice(0,120)||'document';}
 function sameOrigin(req, config){if(!['POST','PUT','PATCH','DELETE'].includes(req.method))return true;const origin=req.headers.origin;if(origin){try{if(new URL(origin).origin!==new URL(config.publicBaseUrl).origin){ // allow loopback dev host on random test ports
   if(!( !config.production && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(origin)))return false;
 }}catch{return false;}}return true;}
-module.exports={sha256,randomToken,strongPassword,hashPassword,verifyPassword,securityHeaders,cookie,getCookie,sanitizeText,safeFilename,sameOrigin};
+module.exports={sha256,randomToken,strongPassword,hashPassword,verifyPassword,securityHeaders,cookie,getCookie,clientIp,sanitizeText,safeFilename,sameOrigin};

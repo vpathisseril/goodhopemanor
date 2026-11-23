@@ -5,8 +5,8 @@
   "files": [
     {
       "path": ".env.example",
-      "bytes": 812,
-      "sha256": "ecc9a11a084aaa00246a94e0836362ec91a04224324399e6b88eedca3ed7f87c"
+      "bytes": 1013,
+      "sha256": "7a8a7a21d2e03068bf468bb85f6222415a09909f562bc273e4568413cc017401"
     },
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6793,
-      "sha256": "e4afdf6daced26160e058145b89b04860b07fa6c2305d508617121bc182e73e5"
+      "bytes": 7019,
+      "sha256": "d6a308f3009a88956c9cb5232ec69d387de87d87ed04d6524fcc847befc9b94a"
     },
     {
       "path": "SECURITY_READINESS.md",
@@ -255,13 +255,13 @@
     },
     {
       "path": "src/app.js",
-      "bytes": 25005,
-      "sha256": "7223ed65e5caf06ca3975f5c0cd55fbde49d8bf2589ac52d0f0d37dcb73ffcfd"
+      "bytes": 25276,
+      "sha256": "b01df76b980226e6101f0c72ec5b60ebac8523f57478de74fea48dea3e155343"
     },
     {
       "path": "src/config.js",
-      "bytes": 2098,
-      "sha256": "38af1a3a2ebd3c98ef93b44f9dfcb09c4521136108b4a500738a76d2baf4d201"
+      "bytes": 2346,
+      "sha256": "e45b7602579446a8f694eb82a57ec84e2652d49bcc35ff764cecf7d08d303964"
     },
     {
       "path": "src/database.js",
@@ -280,8 +280,8 @@
     },
     {
       "path": "src/security.js",
-      "bytes": 2956,
-      "sha256": "2bf8f300d48ceb34d27c7a51173b2e8145824c0ce9ea5a0c7da3d32c21072d9c"
+      "bytes": 3569,
+      "sha256": "2048e49cf534080d7e411f859ab59a2135a4b43033f1f248818db0675560e4ec"
     },
     {
       "path": "src/uploads.js",
@@ -324,6 +324,11 @@
       "sha256": "0951ecf1aaa33dae14b8889dc338420762146e0f4cf61ab926aa5309e7b0c929"
     },
     {
+      "path": "tests/security.test.js",
+      "bytes": 1458,
+      "sha256": "875230020d0f19c965004f10412a7bffc601c3c48e3be886384dc2f8aa958a74"
+    },
+    {
       "path": "tests/uploads.test.js",
       "bytes": 1201,
       "sha256": "ea1ede6a31de2f833b313bac13adf150565f38c508b15b3a541ca9cfb2f181f5"
@@ -339,5 +344,5 @@
       "sha256": "5b3237561743f9ecea676e456609a06f0bb6a6e596236ed9809abb119cfe014f"
     }
   ],
-  "totalFiles": 67
+  "totalFiles": 68
 }

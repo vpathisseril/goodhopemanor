@@ -7,6 +7,10 @@ function loadConfig(env = process.env) {
   const production = env.NODE_ENV === 'production';
   const dataDir = path.resolve(env.GOODHOPE_DATA_DIR || path.join(root, 'data'));
   const publicBaseUrl = env.PUBLIC_BASE_URL || `http://127.0.0.1:${env.PORT || 3000}`;
+  const trustProxyHops = Number(env.TRUST_PROXY_HOPS || 0);
+  if (!Number.isInteger(trustProxyHops) || trustProxyHops < 0 || trustProxyHops > 5) {
+    throw new Error('TRUST_PROXY_HOPS must be a whole number from 0 to 5.');
+  }
   if (production) {
     if (!env.GOODHOPE_DATA_DIR || !path.isAbsolute(env.GOODHOPE_DATA_DIR) || dataDir === root || dataDir.startsWith(root + path.sep)) {
       throw new Error('Production requires GOODHOPE_DATA_DIR on a private, mounted persistent volume outside the application directory.');
@@ -26,6 +30,7 @@ function loadConfig(env = process.env) {
     dbFile: path.join(dataDir,'goodhope.sqlite'),
     port: Number(env.PORT || 3000),
     publicBaseUrl,
+    trustProxyHops,
     production,
     bootstrapPassword: env.INITIAL_ADMIN_PASSWORD || '',
     bootstrapEmail: env.INITIAL_ADMIN_EMAIL || 'info@goodhopemanor.com',
