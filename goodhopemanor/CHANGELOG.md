@@ -22,6 +22,7 @@
 - Scripts load from `<head>` with `defer`.
 - `src/app.js` (730 lines, one `if` chain) split into a route table and per-area route modules in `src/routes/`, with shared services in `src/context.js`. The duplicated CSRF check was merged.
 - Documentation moved to `docs/`.
+- API tests no longer share state: each starts its own server and builds what it needs through fixtures in `tests/helpers.js`, so any test can run alone and one failure no longer cascades.
 
 ### Removed
 
