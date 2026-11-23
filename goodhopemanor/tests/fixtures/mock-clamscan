@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 // TEST ONLY. Never configure this executable as a production malware scanner.
 'use strict';
-const fs=require('node:fs');
-const filename=process.argv.at(-1);
-if(fs.readFileSync(filename).includes(Buffer.from('EICAR-TEST'))){process.stderr.write('Test malware signature detected\n');process.exit(1);}
+const fs = require('node:fs');
+const filename = process.argv.at(-1);
+if (fs.readFileSync(filename).includes(Buffer.from('EICAR-TEST'))) {
+  process.stderr.write('Test malware signature detected\n');
+  process.exit(1);
+}
 process.exit(0);

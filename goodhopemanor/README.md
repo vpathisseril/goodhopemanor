@@ -10,7 +10,7 @@ An accessible, responsive assisted-living information website with approved publ
 - Updated antivirus scanner such as **ClamAV** installed on the host to scan *every* document before approval. Production startup fails closed if AV is missing.
 - HTTPS for production (production cookies use Secure, HttpOnly, SameSite=Strict)
 
-No third-party runtime npm dependencies are required.
+No third-party runtime npm dependencies are required. ESLint and Prettier are development-only dependencies; run `npm ci` once before validating.
 
 ## Start and test locally
 
@@ -18,7 +18,7 @@ No third-party runtime npm dependencies are required.
 2. Optionally set `GOODHOPE_DATA_DIR` to a private directory. The default development directory is `data/` (git-ignored).
 3. Run `npm start`; browse to `http://127.0.0.1:3000` and open **Documents** at the top or **Admin Portal** at the bottom.
 4. Log in with `admin` and the private initial password. The application forces a password change before administration.
-5. Run `npm run validate` for static checks and automated security/API tests. The test suite uses an explicitly marked fake scanner; it is **not** an antivirus certification.
+5. Run `npm run validate` for site checks, ESLint, Prettier and automated security/API tests. Run `npm run format` to fix formatting. The test suite uses an explicitly marked fake scanner; it is **not** an antivirus certification. Upload tests need Linux or macOS, because the fake scanner is a `#!/usr/bin/env node` script that Windows cannot execute directly; CI runs them on Linux.
 
 ## Production configuration
 

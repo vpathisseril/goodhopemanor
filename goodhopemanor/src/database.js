@@ -1,14 +1,22 @@
 'use strict';
 const fs = require('node:fs');
-const crypto=require('node:crypto');
+const crypto = require('node:crypto');
 const {DatabaseSync} = require('node:sqlite');
-const {hashPassword,strongPassword}=require('./security');
-const ROLES = ['admin','editor','approver'];
-const CATEGORIES=['Visitation Policy','Monthly Activity Calendars','Menu','Resident Notices','Other Facility Documents'];
+const {hashPassword, strongPassword} = require('./security');
+const ROLES = ['admin', 'editor', 'approver'];
+const CATEGORIES = [
+  'Visitation Policy',
+  'Monthly Activity Calendars',
+  'Menu',
+  'Resident Notices',
+  'Other Facility Documents',
+];
 function openDatabase(config) {
   const db = new DatabaseSync(config.dbFile);
-  fs.chmodSync(config.dbFile,0o600);
-  db.exec('PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000; PRAGMA foreign_keys=ON; PRAGMA synchronous=FULL;');
+  fs.chmodSync(config.dbFile, 0o600);
+  db.exec(
+    'PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000; PRAGMA foreign_keys=ON; PRAGMA synchronous=FULL;',
+  );
   db.exec(`
     CREATE TABLE IF NOT EXISTS users (
       id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE COLLATE NOCASE, email TEXT NOT NULL UNIQUE COLLATE NOCASE,
@@ -48,26 +56,60 @@ function openDatabase(config) {
     CREATE INDEX IF NOT EXISTS docs_visibility_idx ON documents(approved,archived,deleted,effective_date,expiration_date);
     CREATE INDEX IF NOT EXISTS audit_created_idx ON audit_log(created_at);
   `);
-  const AUDIT_DETAILS_MAX=2000;
-  function audit(actorId,event,targetId=null,details={}){
+  const AUDIT_DETAILS_MAX = 2000;
+  function audit(actorId, event, targetId = null, details = {}) {
     // Never cut a JSON string mid-way: an oversized payload is replaced by a valid marker object.
-    let serialized=JSON.stringify(details);
-    if(serialized.length>AUDIT_DETAILS_MAX)serialized=JSON.stringify({truncated:true,originalLength:serialized.length});
-    db.prepare('INSERT INTO audit_log (id,created_at,actor_id,event,target_id,details) VALUES (?,?,?,?,?,?)')
-      .run(crypto.randomUUID(),new Date().toISOString(),actorId||null,event,targetId,serialized);
+    let serialized = JSON.stringify(details);
+    if (serialized.length > AUDIT_DETAILS_MAX)
+      serialized = JSON.stringify({truncated: true, originalLength: serialized.length});
+    db.prepare(
+      'INSERT INTO audit_log (id,created_at,actor_id,event,target_id,details) VALUES (?,?,?,?,?,?)',
+    ).run(
+      crypto.randomUUID(),
+      new Date().toISOString(),
+      actorId || null,
+      event,
+      targetId,
+      serialized,
+    );
   }
-  function tx(work){db.exec('BEGIN IMMEDIATE');try{const result=work();db.exec('COMMIT');return result;}catch(e){db.exec('ROLLBACK');throw e;}}
-  async function seedAdmin(){
-    if(db.prepare('SELECT count(*) AS n FROM users').get().n) return;
-    if(!strongPassword(config.bootstrapPassword)){
-      throw new Error('Set INITIAL_ADMIN_PASSWORD privately: 14–128 characters, not a common password. Never use password01.');
+  function tx(work) {
+    db.exec('BEGIN IMMEDIATE');
+    try {
+      const result = work();
+      db.exec('COMMIT');
+      return result;
+    } catch (e) {
+      db.exec('ROLLBACK');
+      throw e;
     }
-    const hp=await hashPassword(config.bootstrapPassword);
-    const id=crypto.randomUUID();const now=new Date().toISOString();
-    db.prepare('INSERT INTO users (id,username,email,role,disabled,must_change,password_salt,password_hash,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)')
-      .run(id,'admin',config.bootstrapEmail,'admin',0,1,hp.passwordSalt,hp.passwordHash,now,now);
-    audit(id,'system.bootstrap',id);
   }
-  return {db,audit,tx,seedAdmin};
+  async function seedAdmin() {
+    if (db.prepare('SELECT count(*) AS n FROM users').get().n) return;
+    if (!strongPassword(config.bootstrapPassword)) {
+      throw new Error(
+        'Set INITIAL_ADMIN_PASSWORD privately: 14–128 characters, not a common password. Never use password01.',
+      );
+    }
+    const hp = await hashPassword(config.bootstrapPassword);
+    const id = crypto.randomUUID();
+    const now = new Date().toISOString();
+    db.prepare(
+      'INSERT INTO users (id,username,email,role,disabled,must_change,password_salt,password_hash,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)',
+    ).run(
+      id,
+      'admin',
+      config.bootstrapEmail,
+      'admin',
+      0,
+      1,
+      hp.passwordSalt,
+      hp.passwordHash,
+      now,
+      now,
+    );
+    audit(id, 'system.bootstrap', id);
+  }
+  return {db, audit, tx, seedAdmin};
 }
-module.exports={openDatabase,ROLES,CATEGORIES};
+module.exports = {openDatabase, ROLES, CATEGORIES};

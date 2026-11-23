@@ -28,6 +28,9 @@ test('clientIp falls back safely when the header is missing or short', () => {
 
 test('TRUST_PROXY_HOPS must be a small whole number', () => {
   for (const value of ['-1', '1.5', 'yes', '6']) {
-    assert.throws(() => loadConfig({NODE_ENV: 'test', TRUST_PROXY_HOPS: value}), /TRUST_PROXY_HOPS/);
+    assert.throws(
+      () => loadConfig({NODE_ENV: 'test', TRUST_PROXY_HOPS: value}),
+      /TRUST_PROXY_HOPS/,
+    );
   }
 });

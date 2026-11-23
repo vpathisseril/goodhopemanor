@@ -1,18 +1,27 @@
 {
-  "name":"goodhopemanor-website",
-  "version":"2.0.0",
-  "private":true,
-  "description":"Good Hope Manor public site and protected document administration",
-  "engines":{"node":">=22.13.0"},
-  "scripts":{
-    "start":"node server.js",
-    "test":"node --test tests/*.test.js",
-    "lint":"python3 scripts/static_check.py",
-    "validate":"npm run lint && npm test",
-    "backup":"node scripts/backup.js",
-    "restore":"node scripts/restore.js",
-    "recover-admin":"node scripts/reset_admin.js"
+  "name": "goodhopemanor-website",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Good Hope Manor public site and protected document administration",
+  "engines": {
+    "node": ">=22.13.0"
   },
-  "dependencies":{},
-  "devDependencies":{}
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:site": "python3 scripts/static_check.py",
+    "validate": "npm run check:site && npm run lint && npm run format:check && npm test",
+    "backup": "node scripts/backup.js",
+    "restore": "node scripts/restore.js",
+    "recover-admin": "node scripts/reset_admin.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.15.0",
+    "globals": "17.14.0",
+    "prettier": "3.10.1"
+  }
 }
