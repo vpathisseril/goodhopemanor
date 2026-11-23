@@ -53,9 +53,10 @@ function buildPages() {
   );
   return Object.entries(pages).map(([file, page]) => {
     const main = fs.readFileSync(path.join(siteDir, 'pages', file), 'utf8').replace(/\n$/, '');
-    const afterMain = (page.scripts || [])
+    // Deferred scripts in <head> download early and run after parsing, in this order.
+    const scripts = [...(page.scripts || []), 'script.js']
       .map((src) => `<script src="${src}" defer></script>`)
-      .join('');
+      .join('\n  ');
     const html = fill(layout, {
       title: page.title,
       description: page.description,
@@ -63,7 +64,7 @@ function buildPages() {
       seo: renderSeo(page, file, siteUrl),
       nav: renderNav(nav, file),
       main,
-      afterMain,
+      scripts,
     });
     return {file, html};
   });

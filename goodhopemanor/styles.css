@@ -24,7 +24,6 @@ html {
 body {
   margin: 0;
   font-family:
-    Inter,
     system-ui,
     -apple-system,
     Segoe UI,
@@ -526,7 +525,7 @@ h3 {
 }
 
 .footer__heading {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: system-ui, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.95rem;
