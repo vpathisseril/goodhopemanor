@@ -1,0 +1,353 @@
+{
+  "name": "Good Hope Manor secure website",
+  "release": "2.0.0",
+  "structure": "goodhopemanor/<project files>",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 812,
+      "sha256": "ecc9a11a084aaa00246a94e0836362ec91a04224324399e6b88eedca3ed7f87c"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "bytes": 207,
+      "sha256": "a8a1219a80e71b61cc7698541e29b57842f1ab6953449fc2266b2fe567be8e96"
+    },
+    {
+      "path": ".github/workflows/codeql.yml",
+      "bytes": 431,
+      "sha256": "1cbde5f9faaf7e192953e880c724c454ddc35a08cbaf56128311b2cde0ae9b99"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "bytes": 472,
+      "sha256": "f17f899a7e4be181b623fabc56e92d35452147896698e957925ceda43bb77ae6"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 228,
+      "sha256": "f59d1d5ba6082f06904fe641101a891b8bbfdecc70c33cd8a13020d24683809b"
+    },
+    {
+      "path": ".replit",
+      "bytes": 43,
+      "sha256": "c9ed7ad3238d221c0e0e9ebd28c94e3b16ef27cb76fa2708b21aadbfcbd3a986"
+    },
+    {
+      "path": "404.html",
+      "bytes": 4491,
+      "sha256": "0091d3f23dad36f45377d47283ae9aa9934719a66c50eaa394b16510a4c627c9"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 2260,
+      "sha256": "f864fab9cfa419fe0894d09899c221607c919109c6721caae4c086436d459df8"
+    },
+    {
+      "path": "CONTENT_SOURCE_NOTES.md",
+      "bytes": 704,
+      "sha256": "6785a668f3cfcf6032376c54a489c6fd39a9c8c4a06bf449a9641bff6b792e7b"
+    },
+    {
+      "path": "DEPLOYMENT_CHECKLIST.md",
+      "bytes": 2015,
+      "sha256": "1c4ae4c29442984bc5ad5dc77e36b060ca3cea54ef3b98db01defc1b42c36a78"
+    },
+    {
+      "path": "GITHUB_UPLOAD_GUIDE.md",
+      "bytes": 879,
+      "sha256": "dc0e36163ff5cf4fcc0789135d96cbb41c7a0d8683d7e021bb8188945cd76901"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6793,
+      "sha256": "e4afdf6daced26160e058145b89b04860b07fa6c2305d508617121bc182e73e5"
+    },
+    {
+      "path": "SECURITY_READINESS.md",
+      "bytes": 3594,
+      "sha256": "5468db2d9ca88f8d60f2c1fd8a6320ad170df5ee9c2b872147d0b4cae1f42dcf"
+    },
+    {
+      "path": "TESTING_VALIDATION_REPORT.md",
+      "bytes": 3869,
+      "sha256": "0b2367af90ab44297a91a4ced41509cf39f8bd33fc8249dfcf8c58058ee82d58"
+    },
+    {
+      "path": "about.html",
+      "bytes": 8011,
+      "sha256": "f583af575d81b41ee312a6ee13de3e7c1d04afc7f58b6a82d4f5ffca9e84faac"
+    },
+    {
+      "path": "accessibility.html",
+      "bytes": 4855,
+      "sha256": "793c776bce52a4c5b19464f818f2f160fd0a19b269e5b0c5d5f7469f1ef6c741"
+    },
+    {
+      "path": "assets/images/accessible-bathroom.jpg",
+      "bytes": 175955,
+      "sha256": "5d5a6133cc952d997bb7810f2f117a8366712b11566e900b85b0a8119d73e2b5"
+    },
+    {
+      "path": "assets/images/activity-room-table.jpg",
+      "bytes": 238821,
+      "sha256": "b31bf8ed1492a745996faf11e2231a947e11a30cf981820d1f972256bbb844d6"
+    },
+    {
+      "path": "assets/images/bedroom-blue.jpg",
+      "bytes": 195350,
+      "sha256": "fdd271f5e0e539cc6f0b97aa164e02b031a0826e18d18204fa69b52db5a8b611"
+    },
+    {
+      "path": "assets/images/bedroom-gold.jpg",
+      "bytes": 199918,
+      "sha256": "e90790bd236610d4d373278d584368ed16b4ed2c743bd18dd3d9e512483bd9e0"
+    },
+    {
+      "path": "assets/images/dining-blue.jpg",
+      "bytes": 161911,
+      "sha256": "7671e203665fa5bcfce371f941c06d27dc6e814c57bba2fa1defbbb65e0fd615"
+    },
+    {
+      "path": "assets/images/dining-red.jpg",
+      "bytes": 259197,
+      "sha256": "4ce1e623c932ff9ffaa682e8317e45a2c2d9d8c21262c0e62f96360af65c46ec"
+    },
+    {
+      "path": "assets/images/exterior-good-hope-manor.jpg",
+      "bytes": 47138,
+      "sha256": "b429a4d5a206fe5f412748a0080ba75d0de3cdd2a3ef7f71454dee11f7796e6a"
+    },
+    {
+      "path": "assets/images/favicon.ico",
+      "bytes": 1567,
+      "sha256": "984505116f647ef4aa87b6c369721669d3d6c10f6feb6b77f1fb2bf28efffcc0"
+    },
+    {
+      "path": "assets/images/favicon.png",
+      "bytes": 13443,
+      "sha256": "3b07c7c5b7cafa5645d8e36d8a2f66aa5f115bcbab019eacca930f3e5ea5cb40"
+    },
+    {
+      "path": "assets/images/good-hope-manor-logo.jpg",
+      "bytes": 16645,
+      "sha256": "beda81d3c1da78d1784372d45d8b5da53fd0261c6cd24ca2ae97a03a85b5ba8a"
+    },
+    {
+      "path": "assets/images/good-hope-manor-map.png",
+      "bytes": 551524,
+      "sha256": "6d90a982c53ac3074eea70cd05ddad0a0ed7ddb7e53aafa1f16a56d30e6d071d"
+    },
+    {
+      "path": "assets/images/library-lounge.jpg",
+      "bytes": 369891,
+      "sha256": "63600e9f0b1c24329e92591152cdd86f5ab00315722a4f63bbeac5e18fa2eaf7"
+    },
+    {
+      "path": "assets/images/lounge-real-photo.jpg",
+      "bytes": 318918,
+      "sha256": "824d5bbf9cecf54e5e4a9a97f45927b78f321e0f54116d95c24036b1fba3c9e1"
+    },
+    {
+      "path": "contact.html",
+      "bytes": 7118,
+      "sha256": "5422e86efad998ba27adcfd9a707552833987d9faddbc43dd92fe7116211b121"
+    },
+    {
+      "path": "data/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "documents.html",
+      "bytes": 10619,
+      "sha256": "d60c48aa11c8e18fb3cfb2e4b02dc2acccc54d423ab2d9f82f48684bbf420ab1"
+    },
+    {
+      "path": "documents.js",
+      "bytes": 12600,
+      "sha256": "eb3e964acae32f89345ee0cd80f058181441a3c85a9bb2eaf4ef147d4bad7629"
+    },
+    {
+      "path": "families.html",
+      "bytes": 10373,
+      "sha256": "c0db492a72bbb438d13f3c83be73f73aadc1716e3c640541506ddc688a8a8e61"
+    },
+    {
+      "path": "index.html",
+      "bytes": 16292,
+      "sha256": "16b2ba7bf92699906c5af142cf22dcc56f0a546516ff31c3a3095188653876a0"
+    },
+    {
+      "path": "life.html",
+      "bytes": 11329,
+      "sha256": "64d9447d3999f9540be309f695f441edbcec8643a1b3c78923bec9fc8104137b"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 290,
+      "sha256": "3814b516a2befbfb5280cd6d93251cf3c62e9ae530486e8337880c731176ff93"
+    },
+    {
+      "path": "package.json",
+      "bytes": 550,
+      "sha256": "6047e4995d2a26d3a3efb9faf565b167a1cef82968ac31cd8545a71fd13f4fa7"
+    },
+    {
+      "path": "privacy.html",
+      "bytes": 5579,
+      "sha256": "f6cd4d1299e99e7247ba11f574094608f7df6c0ce4977c96c2931a2db8ad9f3d"
+    },
+    {
+      "path": "referrals.html",
+      "bytes": 7119,
+      "sha256": "1c7a40d049e710ad728ff89e7801fdb49a05b4d5205a183b2f5a15eac32eb211"
+    },
+    {
+      "path": "replit.nix",
+      "bytes": 66,
+      "sha256": "67676f295a671e0041e51e83f37f99d365afd60af2fe40827cb35b452d0e029c"
+    },
+    {
+      "path": "reviews.html",
+      "bytes": 6468,
+      "sha256": "16535c58b6ecf90a10fe1b621f828f01e69b2aa53ebed4aa26b5b117213b3b13"
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 45,
+      "sha256": "befa30284d46cf89ba3ab58ba65af7e987be472e9efcdd368c98cea0530e378b"
+    },
+    {
+      "path": "run-site.sh",
+      "bytes": 69,
+      "sha256": "abb21da706603015fb1c1452a85638ad8dab4c2b017d986cb90e3b7f7ed4f0d5"
+    },
+    {
+      "path": "script.js",
+      "bytes": 2289,
+      "sha256": "86fcc5d957409894b75aed9a1159d2cd4b13f029836a85ddc4a9361a3a31e389"
+    },
+    {
+      "path": "scripts/backup.js",
+      "bytes": 2110,
+      "sha256": "dc6fd0492492c3ef888308a63962e201ccf61e717e519f5e5c98553731a15431"
+    },
+    {
+      "path": "scripts/reset_admin.js",
+      "bytes": 2129,
+      "sha256": "d2c3f85fe8c5b6d6bc425f79181d8217d859102dee3b532d0f2ee0d2d6c02854"
+    },
+    {
+      "path": "scripts/restore.js",
+      "bytes": 1828,
+      "sha256": "0c6956e0232dfe3949307907cdf1f4bb961b842c524814f853989db8bb3e79be"
+    },
+    {
+      "path": "scripts/static_check.py",
+      "bytes": 3040,
+      "sha256": "475ba04c1d951d2b1103aabc79e4764bbe26a92e53d5becc4e9c65b05d4464eb"
+    },
+    {
+      "path": "scripts/validate_site.py",
+      "bytes": 6007,
+      "sha256": "36120898fd2c1b0c077c95b614a1137485cbd1bee4f9cbbb268c3c60b614b399"
+    },
+    {
+      "path": "server.js",
+      "bytes": 297,
+      "sha256": "cb0afb521178f0c90faf56146a10ee38581ee4b4277bd10e8cc4752c0131002b"
+    },
+    {
+      "path": "services.html",
+      "bytes": 8722,
+      "sha256": "c064cba9316072ce4923511cced1e8aa7f05bca795ca3dd63cf4186557354f5f"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 842,
+      "sha256": "f10743b59f81def2fd97bef648c44463b4388761d10dc49d0f60606beaf8b0dc"
+    },
+    {
+      "path": "src/app.js",
+      "bytes": 24794,
+      "sha256": "ee591ec1c8ec70b098df5d3b8ab995b2ff620bc723ed993ff3dc803aa0a37d95"
+    },
+    {
+      "path": "src/config.js",
+      "bytes": 2098,
+      "sha256": "38af1a3a2ebd3c98ef93b44f9dfcb09c4521136108b4a500738a76d2baf4d201"
+    },
+    {
+      "path": "src/database.js",
+      "bytes": 4125,
+      "sha256": "d47544cc1be14a43441d52bb185a1f9e5dea3a808a98fe6a911bd5aeeab527cc"
+    },
+    {
+      "path": "src/email.js",
+      "bytes": 1030,
+      "sha256": "7838fd4955fb791bf87a8b382bded48e3d2f6d63e697d8730f959154f3536260"
+    },
+    {
+      "path": "src/responses.js",
+      "bytes": 2006,
+      "sha256": "1e8708115d1b419af59c099d575788266f12553d1d0193ae1f07a7be1011c198"
+    },
+    {
+      "path": "src/security.js",
+      "bytes": 2956,
+      "sha256": "2bf8f300d48ceb34d27c7a51173b2e8145824c0ce9ea5a0c7da3d32c21072d9c"
+    },
+    {
+      "path": "src/uploads.js",
+      "bytes": 6518,
+      "sha256": "85852ee159d8753c9b67c0d30f107135a1a43e92873b36acc1a19be253e11db8"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 10236,
+      "sha256": "849ea4f0a495721e1b497ddc5cf3f5ab8c6a076c4ac5b390c2161867baf28379"
+    },
+    {
+      "path": "tests/api.test.js",
+      "bytes": 13885,
+      "sha256": "a0c61154041f3f5e0bb4eb60958c1a6ec728d5c2bb23f0e020762ce6556ad9e0"
+    },
+    {
+      "path": "tests/email.test.js",
+      "bytes": 1193,
+      "sha256": "bdbec2c4b6dfb1da21571a8627e1d1de1eb09dc7e3bd700fffc922d43f76df92"
+    },
+    {
+      "path": "tests/fixtures/mock-clamscan",
+      "bytes": 337,
+      "sha256": "9cfd735c7a47f335c2657d61640129b815d3e5f286f320b666151300ed6ebcd6"
+    },
+    {
+      "path": "tests/fixtures/valid.docx",
+      "bytes": 561,
+      "sha256": "d7a5498e9b6bf4bee627d6d304724d8df230b4636a236fb010cca78f622f4868"
+    },
+    {
+      "path": "tests/persistence.test.js",
+      "bytes": 3240,
+      "sha256": "0951ecf1aaa33dae14b8889dc338420762146e0f4cf61ab926aa5309e7b0c929"
+    },
+    {
+      "path": "tests/uploads.test.js",
+      "bytes": 1201,
+      "sha256": "ea1ede6a31de2f833b313bac13adf150565f38c508b15b3a541ca9cfb2f181f5"
+    },
+    {
+      "path": "uploads/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "validate-local.sh",
+      "bytes": 76,
+      "sha256": "5b3237561743f9ecea676e456609a06f0bb6a6e596236ed9809abb119cfe014f"
+    }
+  ],
+  "totalFiles": 69
+}

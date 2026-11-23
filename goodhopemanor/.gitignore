@@ -1,0 +1,18 @@
+# Never publish secrets, files, private state or backups
+.env
+.env.*
+!.env.example
+node_modules/
+data/*
+!data/.gitkeep
+uploads/*
+!uploads/.gitkeep
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+backups/
+*.bak
+*.log
+.DS_Store
+coverage/

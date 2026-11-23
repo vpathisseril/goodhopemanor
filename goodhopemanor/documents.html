@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documents | Good Hope Manor</title>
+  <meta name="description" content="View approved Good Hope Manor documents by category." />
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+  <meta property="og:title" content="Documents | Good Hope Manor" />
+  <meta property="og:description" content="View approved Good Hope Manor documents by category." />
+  <meta property="og:image" content="assets/images/exterior-good-hope-manor.jpg" />
+  <meta name="theme-color" content="#8A1F2D" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="top-strip"><div class="container top-strip__inner"><span>Assisted Living Facility License #8627</span><a href="tel:+19546772900">Call (954) 677-2900</a></div></div>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Good Hope Manor Home"><img src="assets/images/good-hope-manor-logo.jpg" alt="Good Hope Manor logo" /></a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu" aria-label="Primary navigation"><a class="nav-link " href="index.html">Home</a><a class="nav-link " href="about.html">About Us</a><a class="nav-link " href="services.html">Care &amp; Services</a><a class="nav-link " href="life.html">Life at Good Hope</a><a class="nav-link " href="families.html">For Families</a><a class="nav-link " href="reviews.html">Reviews</a><a class="nav-link " href="referrals.html">Referral Partners</a><a class="nav-link active" href="documents.html">Documents</a><a class="nav-link " href="contact.html">Contact / Schedule a Tour</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="container"><h1>Documents</h1><p>View approved Good Hope Manor documents by category.</p></div></section>
+<section class="section"><div class="container">
+  <div class="section-heading"><p class="eyebrow">Guest Documents</p><h2>Approved Facility Documents</h2><p>Guests may view approved documents by category. Draft, pending, archived, expired, or admin-only documents are not shown publicly.</p></div>
+  <div class="doc-tabs" role="list" aria-label="Document categories">
+    <button class="doc-filter active" type="button" data-category="all">All</button>
+    <button class="doc-filter" type="button" data-category="Visitation Policy">Visitation Policy</button>
+    <button class="doc-filter" type="button" data-category="Monthly Activity Calendars">Monthly Activity Calendars</button>
+    <button class="doc-filter" type="button" data-category="Menu">Menu</button>
+    <button class="doc-filter" type="button" data-category="Resident Notices">Resident Notices</button>
+    <button class="doc-filter" type="button" data-category="Other Facility Documents">Other Facility Documents</button>
+  </div>
+  <div id="publicDocuments" class="document-grid" aria-live="polite"></div>
+</div></section>
+<section class="section section--soft" id="admin"><div class="container admin-shell">
+  <div class="section-heading"><p class="eyebrow">Staff Access</p><h2>Document &amp; User Management</h2><p>Authorized staff may manage documents based on their assigned permissions.</p></div>
+  <p id="adminStatus" role="status" aria-live="polite" class="form-status"></p>
+  <div id="resetPanel" class="admin-card" hidden>
+    <h3>Set Your Password</h3><p>Use your one-time invitation link to choose a secure password. The link is valid for 30 minutes.</p>
+    <form id="resetForm" class="stack-form"><label>New Password<input type="password" name="newPassword" minlength="14" maxlength="128" autocomplete="new-password" required></label><button class="button" type="submit">Set Password</button></form>
+  </div>
+  <div id="loginPanel" class="admin-card">
+    <h3>Staff Login</h3>
+    <form id="loginForm" class="stack-form">
+      <label>Username<input name="username" autocomplete="username" required></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="button" type="submit">Login</button>
+    </form>
+  </div>
+  <div id="passwordPanel" class="admin-card" hidden>
+    <h3>Change Temporary Password</h3><p>Choose a unique password with at least 14 characters. This step is required before continuing.</p>
+    <form id="changePasswordForm" class="stack-form"><label>New Password<input name="newPassword" type="password" autocomplete="new-password" minlength="14" maxlength="128" required></label><button class="button" type="submit">Change Password</button></form>
+  </div>
+  <div id="adminTools" hidden>
+    <div class="admin-card"><div class="row-actions"><strong id="signedInUser"></strong><button class="mini-btn" type="button" id="logoutButton">Log out</button></div>
+      <details><summary>Change my password</summary><form id="selfPasswordForm" class="stack-form">
+        <label>Current Password<input name="oldPassword" type="password" autocomplete="current-password" required></label>
+        <label>New Password<input name="newPassword" type="password" autocomplete="new-password" minlength="14" maxlength="128" required></label>
+        <button type="submit" class="button">Update password</button>
+      </form></details>
+    </div>
+    <div class="admin-card" data-for-roles="admin editor"><h3>Upload Document</h3>
+      <form id="uploadForm" class="stack-form">
+        <label>Title<input name="title" maxlength="150" required></label>
+        <label>Category<select name="category" required><option>Visitation Policy</option><option>Monthly Activity Calendars</option><option>Menu</option><option>Resident Notices</option><option>Other Facility Documents</option></select></label>
+        <label>Effective Date<input name="effectiveDate" type="date"></label><label>Expiration Date<input name="expirationDate" type="date"></label>
+        <label>File<input name="file" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" required></label>
+        <p class="form-note">Files are private until a separate approval action. Maximum file size 20 MB. In production, malware scanning must succeed before an upload is accepted.</p>
+        <button class="button" type="submit">Upload as Draft</button>
+      </form>
+    </div>
+    <div class="admin-card" data-for-roles="admin editor"><h3>Replace Document File</h3>
+      <form id="replaceForm" class="stack-form"><label>Document<select name="documentId" id="replaceDocSelect" required></select></label><label>New File<input type="file" name="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" required></label><button class="button" type="submit">Upload Replacement for Approval</button></form>
+    </div>
+    <div class="admin-card" data-for-roles="admin"><h3>Invite New Staff Member</h3>
+      <form id="createUserForm" class="stack-form">
+        <label>Username<input name="username" required pattern="[a-zA-Z][a-zA-Z0-9._-]{2,39}"></label>
+        <label>Email<input name="email" type="email" required></label>
+        <label>Role<select name="role" required><option value="editor">Editor — upload and archive</option><option value="approver">Approver — approve or unapprove</option><option value="admin">Administrator — full permissions</option></select></label>
+        <button class="button" type="submit">Create Account &amp; Invitation</button>
+      </form><p class="form-note">Invitation links are single-use and expire after 30 minutes. Automatic email requires a configured email provider; otherwise share the link through a secure channel.</p>
+      <div id="newUserResult" class="form-status" aria-live="polite"></div>
+      <h3>Manage Users</h3><div id="adminUsers"></div>
+    </div>
+    <div class="admin-card"><h3>Manage Documents</h3><div id="adminDocuments" class="admin-document-list"></div></div>
+    <div class="admin-card" data-for-roles="admin"><h3>Recent Audit History</h3><div id="auditEvents"></div></div>
+  </div>
+</div></section>
+</main><script src="documents.js" defer></script><footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <img class="footer__logo" src="assets/images/good-hope-manor-logo.jpg" alt="Good Hope Manor logo" />
+      <p class="footer__promise">Good Hope Manor<br>Quality Care Without Compromise</p>
+      <p>Family Owned &amp; Operated<br>Personalized Assisted Living<br>Long-Tenured Staff<br>Table-Service Dining<br>Meaningful Community Life</p>
+      <p>2251 NW 29th Ct. | Oakland Park, FL 33311<br><a href="tel:+19546772900">(954) 677-2900</a> | <a href="mailto:info@goodhopemanor.com">info@goodhopemanor.com</a><br>Assisted Living Facility License #8627</p>
+    </div>
+    <div>
+      <h2 class="footer__heading">Navigation</h2>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Care &amp; Services</a></li><li><a href="life.html">Life at Good Hope</a></li><li><a href="families.html">For Families</a></li><li><a href="reviews.html">Reviews</a></li><li><a href="referrals.html">Referral Partners</a></li><li><a href="documents.html">Documents</a></li><li><a href="contact.html">Contact / Schedule a Tour</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="documents.html#admin">Admin Portal</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer__heading">Important Information</h2>
+      <p class="footer__note">Services are based on each resident’s individual needs, assessment, care plan, applicable licensing requirements, and service availability. Clinical services may involve outside providers and are subject to applicable provider requirements and health insurance coverage. Admission and continued residency are subject to assessment and applicable requirements.</p>
+      <p><a href="https://quality.healthfinder.fl.gov/" rel="noopener noreferrer" target="_blank">AHCA consumer information for licensed facilities</a></p>
+    </div>
+  </div>
+  <div class="container footer__bottom"><span>© 2026 Good Hope Manor. All Rights Reserved.</span><span>Quality Care Without Compromise.</span></div>
+</footer>
+<button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+<script src="script.js" defer></script>
+</body></html>
