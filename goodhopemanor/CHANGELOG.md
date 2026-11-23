@@ -20,6 +20,7 @@
 - Added canonical URLs and absolute link-preview (`og:`) tags; the 404 page is `noindex`; the homepage has a descriptive title.
 - Documents page: category filters are toggle buttons with `aria-pressed`, and document details are edited in an inline form with date pickers instead of browser prompts.
 - Scripts load from `<head>` with `defer`.
+- `src/app.js` (730 lines, one `if` chain) split into a route table and per-area route modules in `src/routes/`, with shared services in `src/context.js`. The duplicated CSRF check was merged.
 - Documentation moved to `docs/`.
 
 ### Removed
