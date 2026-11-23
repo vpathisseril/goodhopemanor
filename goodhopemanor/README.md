@@ -86,4 +86,9 @@ For loss of the final administrator account, an authorized host operator can sto
 - GitHub workflows run automated tests and CodeQL on compatible repositories. Monitoring logs contain response status, route class and request duration without credentials. Connect logs to your production alerting platform.
 - Do not assume previous `users.json` / `documents.json` are automatically migrated to the new SQLite database. Preserve an encrypted backup of old uploads and contact the developer to plan an explicit migration; do not place private legacy data in GitHub.
 
-See `SECURITY_READINESS.md`, `TESTING_VALIDATION_REPORT.md`, and `DEPLOYMENT_CHECKLIST.md`.
+## Further documentation
+
+- [docs/deployment-checklist.md](docs/deployment-checklist.md): production launch gates
+- [docs/security.md](docs/security.md): security controls, how they are verified, and residual risks
+- [docs/content-sources.md](docs/content-sources.md): where the public page wording comes from, and content rules
+- [CHANGELOG.md](CHANGELOG.md): release history

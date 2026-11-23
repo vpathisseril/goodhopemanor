@@ -4,6 +4,7 @@
 - [ ] Confirm assisted-living license and published hours are current
 - [ ] Select a **single-instance host** with a guaranteed persistent volume (no ephemeral Autoscale). Mount outside application source
 - [ ] Configure Node.js >=22.13, HTTPS, HTTPS base URL, deployment mode and private persistent volume
+- [ ] Set `TRUST_PROXY_HOPS` to the number of reverse proxies in front of the app (`1` on Replit). Without it, login rate limiting treats every visitor as the proxy's address
 - [ ] Install ClamAV and configure definition updates; set absolute `AV_SCANNER`. Confirm an infected test file is rejected **with the real scanner**
 - [ ] Set a unique secret `INITIAL_ADMIN_PASSWORD`; never share it in email or commit it. Force first login password change
 - [ ] Configure SendGrid key and verified sender to send invitation links, or document the secure manual invitation process
