@@ -29,6 +29,16 @@ function renderNav(nav, activeFile) {
     .join('');
 }
 
+// Indexable pages get a canonical URL; pages marked "noindex" (e.g. 404) are kept out of search.
+function renderSeo(page, file, siteUrl) {
+  if (page.noindex) return '<meta name="robots" content="noindex" />';
+  const url = `${siteUrl}/${file === 'index.html' ? '' : file}`;
+  return [
+    `<link rel="canonical" href="${url}" />`,
+    `<meta property="og:url" content="${url}" />`,
+  ].join('\n  ');
+}
+
 function fill(template, values) {
   return template.replace(/\{\{(\w+)\}\}/g, (match, key) => {
     if (!Object.hasOwn(values, key)) throw new Error(`Layout placeholder {{${key}}} has no value`);
@@ -38,7 +48,9 @@ function fill(template, values) {
 
 function buildPages() {
   const layout = fs.readFileSync(path.join(siteDir, 'layout.html'), 'utf8');
-  const {nav, pages} = JSON.parse(fs.readFileSync(path.join(siteDir, 'pages.json'), 'utf8'));
+  const {siteUrl, nav, pages} = JSON.parse(
+    fs.readFileSync(path.join(siteDir, 'pages.json'), 'utf8'),
+  );
   return Object.entries(pages).map(([file, page]) => {
     const main = fs.readFileSync(path.join(siteDir, 'pages', file), 'utf8').replace(/\n$/, '');
     const afterMain = (page.scripts || [])
@@ -47,6 +59,8 @@ function buildPages() {
     const html = fill(layout, {
       title: page.title,
       description: page.description,
+      siteUrl,
+      seo: renderSeo(page, file, siteUrl),
       nav: renderNav(nav, file),
       main,
       afterMain,
@@ -79,4 +93,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = {buildPages, renderNav};
+module.exports = {buildPages, renderNav, renderSeo};

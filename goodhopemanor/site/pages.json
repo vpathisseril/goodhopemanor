@@ -1,4 +1,5 @@
 {
+  "siteUrl": "https://www.goodhopemanor.com",
   "nav": [
     {
       "href": "index.html",
@@ -39,7 +40,7 @@
   ],
   "pages": {
     "index.html": {
-      "title": "Good Hope Manor | Good Hope Manor",
+      "title": "Good Hope Manor | Assisted Living in Oakland Park, FL",
       "description": "Family owned and operated assisted living community in Oakland Park, Florida."
     },
     "about.html": {
@@ -85,7 +86,8 @@
     },
     "404.html": {
       "title": "Page Not Found | Good Hope Manor",
-      "description": "The page could not be found."
+      "description": "The page could not be found.",
+      "noindex": true
     }
   }
 }
