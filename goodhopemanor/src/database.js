@@ -48,9 +48,13 @@ function openDatabase(config) {
     CREATE INDEX IF NOT EXISTS docs_visibility_idx ON documents(approved,archived,deleted,effective_date,expiration_date);
     CREATE INDEX IF NOT EXISTS audit_created_idx ON audit_log(created_at);
   `);
+  const AUDIT_DETAILS_MAX=2000;
   function audit(actorId,event,targetId=null,details={}){
+    // Never cut a JSON string mid-way: an oversized payload is replaced by a valid marker object.
+    let serialized=JSON.stringify(details);
+    if(serialized.length>AUDIT_DETAILS_MAX)serialized=JSON.stringify({truncated:true,originalLength:serialized.length});
     db.prepare('INSERT INTO audit_log (id,created_at,actor_id,event,target_id,details) VALUES (?,?,?,?,?,?)')
-      .run(crypto.randomUUID(),new Date().toISOString(),actorId||null,event,targetId,JSON.stringify(details).slice(0,2000));
+      .run(crypto.randomUUID(),new Date().toISOString(),actorId||null,event,targetId,serialized);
   }
   function tx(work){db.exec('BEGIN IMMEDIATE');try{const result=work();db.exec('COMMIT');return result;}catch(e){db.exec('ROLLBACK');throw e;}}
   async function seedAdmin(){

@@ -5,7 +5,7 @@ from html.parser import HTMLParser
 import re, subprocess, sys, xml.etree.ElementTree as ET
 root=Path(__file__).resolve().parents[1]
 required=['index.html','about.html','services.html','life.html','families.html','reviews.html','referrals.html','documents.html','contact.html','privacy.html','accessibility.html','404.html']
-forbidden=['Community Photo','restaurant-style dining','24-hour nursing','hospital-level care','prototype/owner-review','owner-review','pending confirmation','confirm approval','confirm nursing oversight','Memory Care','Dementia Care','I deliberately removed language suggesting paid referrals']
+forbidden=['Community Photo','restaurant-style dining','24-hour nursing','hospital-level care','prototype/owner-review','owner-review','pending confirmation','confirm approval','confirm nursing oversight','Memory Care','Dementia Care','I deliberately removed language suggesting paid referrals','should be actual Good Hope Manor photographs']
 class Scan(HTMLParser):
     def __init__(self):super().__init__();self.img=[];self.links=[];self.headings=[]
     def handle_starttag(self,tag,attrs):
@@ -20,6 +20,7 @@ for name in required:
     assert not any(x.lower() in html.lower() for x in forbidden),f'{name}: forbidden wording found'
     parsed=Scan();parsed.feed(html)
     assert parsed.headings and parsed.headings[0]=='h1', f'{name}: heading hierarchy incomplete'
+    assert parsed.headings.count('h1')==1, f'{name}: page must have exactly one <h1>'
     for img in parsed.img:
         assert img.get('alt'),f'{name} missing img alt'
         if img.get('src','').startswith('assets/'):

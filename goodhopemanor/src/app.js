@@ -13,6 +13,8 @@ const SESSION_ABSOLUTE_MS=8*60*60*1000,SESSION_IDLE_MS=30*60*1000, RESET_TTL_MS=
 class ApiError extends Error {constructor(status,message){super(message);this.status=status;}}
 const validateDate=value=>typeof value==='string'&&(!value||/^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(Date.parse(value+'T00:00:00Z')));
 const nowISOString=()=>new Date().toISOString();
+// Rows written before the audit() truncation fix may hold cut-off JSON; never let one break the audit view.
+const parseAuditDetails=text=>{try{return JSON.parse(text);}catch{return {unreadable:true};}};
 const idPattern=/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i;
 const fullDoc=(row)=>({id:row.id,title:row.title,category:row.category,effectiveDate:row.effective_date,expirationDate:row.expiration_date,approved:!!row.approved,archived:!!row.archived,version:row.current_version,createdAt:row.created_at,updatedAt:row.updated_at,approvedAt:row.approved_at});
 async function readBody(req,limit=1024*1024){
@@ -184,7 +186,7 @@ function createServer(config,store){
       }
       if(req.method==='GET'&&pathname==='/api/admin/audit'){
         if(!authorize(req,res,['admin']))return;
-        return json(res,config,200,{events:db.prepare('SELECT * FROM audit_log ORDER BY created_at DESC LIMIT 200').all().map(x=>({createdAt:x.created_at,actorId:x.actor_id,event:x.event,targetId:x.target_id,details:JSON.parse(x.details)}))});
+        return json(res,config,200,{events:db.prepare('SELECT * FROM audit_log ORDER BY created_at DESC LIMIT 200').all().map(x=>({createdAt:x.created_at,actorId:x.actor_id,event:x.event,targetId:x.target_id,details:parseAuditDetails(x.details)}))});
       }
       if(req.method==='POST'&&pathname==='/api/admin/users'){
         const auth=authorize(req,res,['admin'],true);if(!auth)return;

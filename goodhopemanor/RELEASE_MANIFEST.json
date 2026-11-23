@@ -9,6 +9,11 @@
       "sha256": "ecc9a11a084aaa00246a94e0836362ec91a04224324399e6b88eedca3ed7f87c"
     },
     {
+      "path": ".gitattributes",
+      "bytes": 72,
+      "sha256": "418ccb378fca0049106487415dbb2c40d6add9956266e6bfbaa1e5738c4b7e7e"
+    },
+    {
       "path": ".github/dependabot.yml",
       "bytes": 207,
       "sha256": "a8a1219a80e71b61cc7698541e29b57842f1ab6953449fc2266b2fe567be8e96"
@@ -76,7 +81,7 @@
     {
       "path": "about.html",
       "bytes": 8011,
-      "sha256": "f583af575d81b41ee312a6ee13de3e7c1d04afc7f58b6a82d4f5ffca9e84faac"
+      "sha256": "229265ac5a4363e6e32d466a1b81dad580c0b495791d585195489a327cf12e08"
     },
     {
       "path": "accessibility.html",
@@ -151,7 +156,7 @@
     {
       "path": "contact.html",
       "bytes": 7118,
-      "sha256": "5422e86efad998ba27adcfd9a707552833987d9faddbc43dd92fe7116211b121"
+      "sha256": "9d2537e6079246c116dc7a82a0291dc1af6b0aa63da9b8015c213e3308213dcc"
     },
     {
       "path": "data/.gitkeep",
@@ -171,17 +176,17 @@
     {
       "path": "families.html",
       "bytes": 10373,
-      "sha256": "c0db492a72bbb438d13f3c83be73f73aadc1716e3c640541506ddc688a8a8e61"
+      "sha256": "f273b8ebd5c1050390384c61e526fdc041b76f31c26912ea859d637d47ecfe6e"
     },
     {
       "path": "index.html",
-      "bytes": 16292,
-      "sha256": "16b2ba7bf92699906c5af142cf22dcc56f0a546516ff31c3a3095188653876a0"
+      "bytes": 15436,
+      "sha256": "afca082cc55fcd0a0605dbab37474c89234925742120ddc7000d21d456abc5d4"
     },
     {
       "path": "life.html",
-      "bytes": 11329,
-      "sha256": "64d9447d3999f9540be309f695f441edbcec8643a1b3c78923bec9fc8104137b"
+      "bytes": 11140,
+      "sha256": "db1a2818d9fea9b2d60d3bed66f79fc24347af7ffd3b09e817e4e134c86c9652"
     },
     {
       "path": "package-lock.json",
@@ -201,7 +206,7 @@
     {
       "path": "referrals.html",
       "bytes": 7119,
-      "sha256": "1c7a40d049e710ad728ff89e7801fdb49a05b4d5205a183b2f5a15eac32eb211"
+      "sha256": "58f41a57ba0983e9217cd57fba75ff8e81870b51f4096ce302fae65a4cbb46e0"
     },
     {
       "path": "replit.nix",
@@ -211,7 +216,7 @@
     {
       "path": "reviews.html",
       "bytes": 6468,
-      "sha256": "16535c58b6ecf90a10fe1b621f828f01e69b2aa53ebed4aa26b5b117213b3b13"
+      "sha256": "6a3c8e815678dcedc7fcd8f4ef20db21175c4487b5f0f6fdd85f48cb3bcd459b"
     },
     {
       "path": "robots.txt",
@@ -245,13 +250,8 @@
     },
     {
       "path": "scripts/static_check.py",
-      "bytes": 3040,
-      "sha256": "475ba04c1d951d2b1103aabc79e4764bbe26a92e53d5becc4e9c65b05d4464eb"
-    },
-    {
-      "path": "scripts/validate_site.py",
-      "bytes": 6007,
-      "sha256": "36120898fd2c1b0c077c95b614a1137485cbd1bee4f9cbbb268c3c60b614b399"
+      "bytes": 3173,
+      "sha256": "a372cdd4eff99fe421c3589ce3abe2eda09323ea78338839e3eacf157aa5bc64"
     },
     {
       "path": "server.js",
@@ -261,7 +261,7 @@
     {
       "path": "services.html",
       "bytes": 8722,
-      "sha256": "c064cba9316072ce4923511cced1e8aa7f05bca795ca3dd63cf4186557354f5f"
+      "sha256": "f4cff318777b9fe8c486b35e88b66ca11c3270502db3b13077985111ed113d8f"
     },
     {
       "path": "sitemap.xml",
@@ -270,8 +270,8 @@
     },
     {
       "path": "src/app.js",
-      "bytes": 24794,
-      "sha256": "ee591ec1c8ec70b098df5d3b8ab995b2ff620bc723ed993ff3dc803aa0a37d95"
+      "bytes": 25005,
+      "sha256": "7223ed65e5caf06ca3975f5c0cd55fbde49d8bf2589ac52d0f0d37dcb73ffcfd"
     },
     {
       "path": "src/config.js",
@@ -280,8 +280,8 @@
     },
     {
       "path": "src/database.js",
-      "bytes": 4125,
-      "sha256": "d47544cc1be14a43441d52bb185a1f9e5dea3a808a98fe6a911bd5aeeab527cc"
+      "bytes": 4394,
+      "sha256": "2c63ffe9b1bf2c05bfd94ed8cc5d9eb9c77dcd40ab326ab1fb502572b19bdbbc"
     },
     {
       "path": "src/email.js",
@@ -312,6 +312,11 @@
       "path": "tests/api.test.js",
       "bytes": 13885,
       "sha256": "a0c61154041f3f5e0bb4eb60958c1a6ec728d5c2bb23f0e020762ce6556ad9e0"
+    },
+    {
+      "path": "tests/audit.test.js",
+      "bytes": 1115,
+      "sha256": "84ece89392eb2d11063e05db93167bd7aa4e6b56d9c49f6a6326387a23dc4037"
     },
     {
       "path": "tests/email.test.js",
@@ -349,5 +354,5 @@
       "sha256": "5b3237561743f9ecea676e456609a06f0bb6a6e596236ed9809abb119cfe014f"
     }
   ],
-  "totalFiles": 69
+  "totalFiles": 70
 }
