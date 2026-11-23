@@ -141,7 +141,7 @@ async function refreshAdmin() {
           actDocument(d.id, d.archived ? 'unarchive' : 'archive'),
         ),
       );
-      actions.append(button('Edit dates/title', () => editDocument(d)));
+      actions.append(button('Edit dates/title', () => editDocument(row, d)));
     }
     actions.append(button('Version history', () => showVersions(row, d.id)));
     if (state.role === 'admin')
@@ -178,22 +178,71 @@ async function actDocument(id, action) {
     notice(error.message, 'error');
   }
 }
-async function editDocument(d) {
-  const title = prompt('Document title', d.title);
-  if (title === null) return;
-  const exp = prompt('Expiration date (YYYY-MM-DD), or blank', d.expirationDate || '');
-  if (exp === null) return;
-  try {
-    await api(`/api/admin/documents/${d.id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({action: 'metadata', title, expirationDate: exp}),
-    });
-    notice('Metadata saved; approval reset for review.', 'success');
-    await refreshAdmin();
-    await refreshPublic();
-  } catch (error) {
-    notice(error.message, 'error');
+function labelled(text, input) {
+  const label = node('label', text);
+  label.append(input);
+  return label;
+}
+function input(name, type, value) {
+  const field = node('input');
+  field.name = name;
+  field.type = type;
+  field.value = value || '';
+  return field;
+}
+// Inline form (instead of browser prompts) so editing is keyboard- and screen-reader-friendly
+// and dates use the native date picker.
+function editDocument(row, d) {
+  const existing = row.querySelector('.edit-form');
+  if (existing) {
+    existing.querySelector('input').focus();
+    return;
   }
+  const form = node('form', '', 'stack-form edit-form');
+  const title = input('title', 'text', d.title);
+  title.required = true;
+  title.maxLength = 150;
+  const effective = input('effectiveDate', 'date', d.effectiveDate);
+  const expiration = input('expirationDate', 'date', d.expirationDate);
+  const save = node('button', 'Save changes', 'mini-btn');
+  save.type = 'submit';
+  const actions = node('div', '', 'row-actions');
+  actions.append(
+    save,
+    button('Cancel', () => form.remove()),
+  );
+  form.append(
+    labelled('Title', title),
+    labelled('Effective date', effective),
+    labelled('Expiration date', expiration),
+    actions,
+  );
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (effective.value && expiration.value && effective.value > expiration.value) {
+      notice('The expiration date must be on or after the effective date.', 'error');
+      expiration.focus();
+      return;
+    }
+    try {
+      await api(`/api/admin/documents/${d.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          action: 'metadata',
+          title: title.value,
+          effectiveDate: effective.value,
+          expirationDate: expiration.value,
+        }),
+      });
+      notice('Details saved; approval reset for review.', 'success');
+      await refreshAdmin();
+      await refreshPublic();
+    } catch (error) {
+      notice(error.message, 'error');
+    }
+  });
+  row.append(form);
+  title.focus();
 }
 async function showVersions(row, id) {
   try {
@@ -311,8 +360,12 @@ async function refreshAudit() {
 function registerEvents() {
   document.querySelectorAll('.doc-filter').forEach((b) =>
     b.addEventListener('click', () => {
-      document.querySelectorAll('.doc-filter').forEach((x) => x.classList.remove('active'));
+      document.querySelectorAll('.doc-filter').forEach((x) => {
+        x.classList.remove('active');
+        x.setAttribute('aria-pressed', 'false');
+      });
       b.classList.add('active');
+      b.setAttribute('aria-pressed', 'true');
       state.category = b.dataset.category;
       refreshPublic();
     }),

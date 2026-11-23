@@ -2,13 +2,13 @@
 <section class="page-hero"><div class="container"><h1>Documents</h1><p>View approved Good Hope Manor documents by category.</p></div></section>
 <section class="section"><div class="container">
   <div class="section-heading"><p class="eyebrow">Guest Documents</p><h2>Approved Facility Documents</h2><p>Guests may view approved documents by category. Draft, pending, archived, expired, or admin-only documents are not shown publicly.</p></div>
-  <div class="doc-tabs" role="list" aria-label="Document categories">
-    <button class="doc-filter active" type="button" data-category="all">All</button>
-    <button class="doc-filter" type="button" data-category="Visitation Policy">Visitation Policy</button>
-    <button class="doc-filter" type="button" data-category="Monthly Activity Calendars">Monthly Activity Calendars</button>
-    <button class="doc-filter" type="button" data-category="Menu">Menu</button>
-    <button class="doc-filter" type="button" data-category="Resident Notices">Resident Notices</button>
-    <button class="doc-filter" type="button" data-category="Other Facility Documents">Other Facility Documents</button>
+  <div class="doc-tabs" role="group" aria-label="Document categories">
+    <button class="doc-filter active" type="button" aria-pressed="true" data-category="all">All</button>
+    <button class="doc-filter" type="button" aria-pressed="false" data-category="Visitation Policy">Visitation Policy</button>
+    <button class="doc-filter" type="button" aria-pressed="false" data-category="Monthly Activity Calendars">Monthly Activity Calendars</button>
+    <button class="doc-filter" type="button" aria-pressed="false" data-category="Menu">Menu</button>
+    <button class="doc-filter" type="button" aria-pressed="false" data-category="Resident Notices">Resident Notices</button>
+    <button class="doc-filter" type="button" aria-pressed="false" data-category="Other Facility Documents">Other Facility Documents</button>
   </div>
   <div id="publicDocuments" class="document-grid" aria-live="polite"></div>
 </div></section>
