@@ -14,21 +14,6 @@
       "sha256": "418ccb378fca0049106487415dbb2c40d6add9956266e6bfbaa1e5738c4b7e7e"
     },
     {
-      "path": ".github/dependabot.yml",
-      "bytes": 207,
-      "sha256": "a8a1219a80e71b61cc7698541e29b57842f1ab6953449fc2266b2fe567be8e96"
-    },
-    {
-      "path": ".github/workflows/codeql.yml",
-      "bytes": 431,
-      "sha256": "1cbde5f9faaf7e192953e880c724c454ddc35a08cbaf56128311b2cde0ae9b99"
-    },
-    {
-      "path": ".github/workflows/validate.yml",
-      "bytes": 472,
-      "sha256": "f17f899a7e4be181b623fabc56e92d35452147896698e957925ceda43bb77ae6"
-    },
-    {
       "path": ".gitignore",
       "bytes": 228,
       "sha256": "f59d1d5ba6082f06904fe641101a891b8bbfdecc70c33cd8a13020d24683809b"
@@ -354,5 +339,5 @@
       "sha256": "5b3237561743f9ecea676e456609a06f0bb6a6e596236ed9809abb119cfe014f"
     }
   ],
-  "totalFiles": 70
+  "totalFiles": 67
 }

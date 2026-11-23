@@ -8,6 +8,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    defaults:
+      run:
+        # The application lives in a subfolder of the repository.
+        working-directory: goodhopemanor
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
