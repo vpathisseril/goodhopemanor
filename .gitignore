@@ -1,0 +1,11 @@
+# Never commit passwords, uploads, production state, or secrets
+.env
+.env.*
+!.env.example
+data/*
+!data/.gitkeep
+uploads/*
+!uploads/.gitkeep
+node_modules/
+*.log
+.DS_Store
