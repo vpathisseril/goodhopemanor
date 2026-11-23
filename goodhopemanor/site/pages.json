@@ -1,0 +1,91 @@
+{
+  "nav": [
+    {
+      "href": "index.html",
+      "label": "Home"
+    },
+    {
+      "href": "about.html",
+      "label": "About Us"
+    },
+    {
+      "href": "services.html",
+      "label": "Care &amp; Services"
+    },
+    {
+      "href": "life.html",
+      "label": "Life at Good Hope"
+    },
+    {
+      "href": "families.html",
+      "label": "For Families"
+    },
+    {
+      "href": "reviews.html",
+      "label": "Reviews"
+    },
+    {
+      "href": "referrals.html",
+      "label": "Referral Partners"
+    },
+    {
+      "href": "documents.html",
+      "label": "Documents"
+    },
+    {
+      "href": "contact.html",
+      "label": "Contact / Schedule a Tour"
+    }
+  ],
+  "pages": {
+    "index.html": {
+      "title": "Good Hope Manor | Good Hope Manor",
+      "description": "Family owned and operated assisted living community in Oakland Park, Florida."
+    },
+    "about.html": {
+      "title": "About Good Hope Manor | Good Hope Manor",
+      "description": "A family commitment to quality care without compromise."
+    },
+    "services.html": {
+      "title": "Care &amp; Services | Good Hope Manor",
+      "description": "Personalized assisted living with quality care without compromise."
+    },
+    "life.html": {
+      "title": "Life at Good Hope Manor | Good Hope Manor",
+      "description": "More than care — it’s community."
+    },
+    "families.html": {
+      "title": "For Families | Good Hope Manor",
+      "description": "Choosing assisted living is a big decision."
+    },
+    "reviews.html": {
+      "title": "Why Families Recommend Good Hope Manor | Good Hope Manor",
+      "description": "The greatest compliment is a family recommendation."
+    },
+    "referrals.html": {
+      "title": "Referral Partners | Good Hope Manor",
+      "description": "A trusted community for assisted living referrals."
+    },
+    "documents.html": {
+      "title": "Documents | Good Hope Manor",
+      "description": "View approved Good Hope Manor documents by category.",
+      "scripts": ["documents.js"]
+    },
+    "contact.html": {
+      "title": "Contact Good Hope Manor | Good Hope Manor",
+      "description": "Schedule a tour or contact Good Hope Manor."
+    },
+    "privacy.html": {
+      "title": "Privacy Policy | Good Hope Manor",
+      "description": "Privacy policy for Good Hope Manor."
+    },
+    "accessibility.html": {
+      "title": "Accessibility | Good Hope Manor",
+      "description": "Accessibility information for Good Hope Manor."
+    },
+    "404.html": {
+      "title": "Page Not Found | Good Hope Manor",
+      "description": "The page could not be found."
+    }
+  }
+}

@@ -20,6 +20,16 @@ No third-party runtime npm dependencies are required. ESLint and Prettier are de
 4. Log in with `admin` and the private initial password. The application forces a password change before administration.
 5. Run `npm run validate` for site checks, ESLint, Prettier and automated security/API tests. Run `npm run format` to fix formatting. The test suite uses an explicitly marked fake scanner; it is **not** an antivirus certification. Upload tests need Linux or macOS, because the fake scanner is a `#!/usr/bin/env node` script that Windows cannot execute directly; CI runs them on Linux.
 
+## Editing pages
+
+The 12 public `.html` pages in the project root are **generated**. Do not edit them directly.
+
+- `site/layout.html`: shared `<head>`, header, navigation and footer for every page.
+- `site/pages/<page>.html`: the page's own `<main>` content.
+- `site/pages.json`: navigation links, and each page's title, description and extra scripts. To add a page, add an entry here and a matching file in `site/pages/`.
+
+After editing, run `npm run build:pages` and commit both the `site/` change and the regenerated pages. CI runs `npm run check:pages` and fails if they are out of date.
+
 ## Production configuration
 
 Set secrets and deployment variables through your hosting provider, **not in the repository**.

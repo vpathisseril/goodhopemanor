@@ -12,8 +12,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "build:pages": "node scripts/build_pages.js",
+    "check:pages": "node scripts/build_pages.js --check",
     "check:site": "python3 scripts/static_check.py",
-    "validate": "npm run check:site && npm run lint && npm run format:check && npm test",
+    "validate": "npm run check:pages && npm run check:site && npm run lint && npm run format:check && npm test",
     "backup": "node scripts/backup.js",
     "restore": "node scripts/restore.js",
     "recover-admin": "node scripts/reset_admin.js"

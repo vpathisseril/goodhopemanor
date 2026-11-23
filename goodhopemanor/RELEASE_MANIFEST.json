@@ -40,8 +40,8 @@
     },
     {
       "path": "404.html",
-      "bytes": 4491,
-      "sha256": "0091d3f23dad36f45377d47283ae9aa9934719a66c50eaa394b16510a4c627c9"
+      "bytes": 4592,
+      "sha256": "cb991d6bb85d8bbde9740ac96abe9fcab69daefdfae66067302b5edbe5dd51f0"
     },
     {
       "path": "CHANGELOG.md",
@@ -65,8 +65,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 7321,
-      "sha256": "0dde2be08c2c182f28234972f897773d7ce6b4308afd1027ccc409862112c67f"
+      "bytes": 7914,
+      "sha256": "9b43ae3945f8149f16f1b6d7c793654ae34e8539c257be1564ef8454c719abab"
     },
     {
       "path": "SECURITY_READINESS.md",
@@ -80,13 +80,13 @@
     },
     {
       "path": "about.html",
-      "bytes": 8011,
-      "sha256": "229265ac5a4363e6e32d466a1b81dad580c0b495791d585195489a327cf12e08"
+      "bytes": 8133,
+      "sha256": "54344c3e0a84e3565668fd311bec209fb080b5cc05d1e6d319ed3c08d10952d6"
     },
     {
       "path": "accessibility.html",
-      "bytes": 4855,
-      "sha256": "793c776bce52a4c5b19464f818f2f160fd0a19b269e5b0c5d5f7469f1ef6c741"
+      "bytes": 4956,
+      "sha256": "6a1b4baba24e142c8c0c28ac9bfc645f2c0228ce4d823712ed62c6c081fc0bef"
     },
     {
       "path": "assets/images/accessible-bathroom.jpg",
@@ -155,8 +155,8 @@
     },
     {
       "path": "contact.html",
-      "bytes": 7118,
-      "sha256": "9d2537e6079246c116dc7a82a0291dc1af6b0aa63da9b8015c213e3308213dcc"
+      "bytes": 7240,
+      "sha256": "e1f91a43e8a842fc92c08e57a901ef9920936d9ec6a74539ef4dfc335e4e0bd9"
     },
     {
       "path": "data/.gitkeep",
@@ -165,8 +165,8 @@
     },
     {
       "path": "documents.html",
-      "bytes": 10619,
-      "sha256": "d60c48aa11c8e18fb3cfb2e4b02dc2acccc54d423ab2d9f82f48684bbf420ab1"
+      "bytes": 10741,
+      "sha256": "02f0eab8972bda616ae7e21259b53069f3a86c81c0f740cda7d65961dfff413a"
     },
     {
       "path": "documents.js",
@@ -180,18 +180,18 @@
     },
     {
       "path": "families.html",
-      "bytes": 10373,
-      "sha256": "f273b8ebd5c1050390384c61e526fdc041b76f31c26912ea859d637d47ecfe6e"
+      "bytes": 10495,
+      "sha256": "5eb4545a7ad75539bfbeddcca74e0ef899189aed9bdcea5469085fb47f5df1ba"
     },
     {
       "path": "index.html",
-      "bytes": 15436,
-      "sha256": "46d1ceceb1248013998ccdf08b5bbcea7e6cf99093402e5cb6705b1abfb502fe"
+      "bytes": 15558,
+      "sha256": "d29ac09501cd45d01058e9c76715e27f669620790d8ab7e897228509517ca6e7"
     },
     {
       "path": "life.html",
-      "bytes": 11140,
-      "sha256": "db1a2818d9fea9b2d60d3bed66f79fc24347af7ffd3b09e817e4e134c86c9652"
+      "bytes": 11262,
+      "sha256": "d11b853cada58956bff8fceb5d007bbcf6849d410542b7b5673548c3eda2808e"
     },
     {
       "path": "package-lock.json",
@@ -200,18 +200,18 @@
     },
     {
       "path": "package.json",
-      "bytes": 813,
-      "sha256": "08657ce2d8b30f2d67c6ea87fdf04ef23ae4a7b82d53dbe245858a44f17fdee7"
+      "bytes": 944,
+      "sha256": "a3666499e4c5d1ab546b653c331aea98e97ce5ddf46d9340ac79a5626eb62f39"
     },
     {
       "path": "privacy.html",
-      "bytes": 5579,
-      "sha256": "f6cd4d1299e99e7247ba11f574094608f7df6c0ce4977c96c2931a2db8ad9f3d"
+      "bytes": 5680,
+      "sha256": "c54fabc60da5a985272d45aa2990a1ab741dd82cd5c7cd738e3c5b24c03f4337"
     },
     {
       "path": "referrals.html",
-      "bytes": 7119,
-      "sha256": "58f41a57ba0983e9217cd57fba75ff8e81870b51f4096ce302fae65a4cbb46e0"
+      "bytes": 7241,
+      "sha256": "516a24e60d142ec31d5d36a6047a4dd570cb79d83d5125a3d7d125e1717ef0cf"
     },
     {
       "path": "replit.nix",
@@ -220,8 +220,8 @@
     },
     {
       "path": "reviews.html",
-      "bytes": 6468,
-      "sha256": "6a3c8e815678dcedc7fcd8f4ef20db21175c4487b5f0f6fdd85f48cb3bcd459b"
+      "bytes": 6590,
+      "sha256": "48874e9aeddb97a72f06ec0ce93347be6c36c2266b5a5d180215780ceeb6f523"
     },
     {
       "path": "robots.txt",
@@ -242,6 +242,11 @@
       "path": "scripts/backup.js",
       "bytes": 2346,
       "sha256": "7dd1020ec3ec3671728eaa102f93c92f6a9112d18cf0d6b9610b57e17dd7d8ba"
+    },
+    {
+      "path": "scripts/build_pages.js",
+      "bytes": 2800,
+      "sha256": "46a6f73af89c2e8818b5cee143e93f36d60033674435be2dd11bb7ea2ba389a7"
     },
     {
       "path": "scripts/reset_admin.js",
@@ -265,8 +270,78 @@
     },
     {
       "path": "services.html",
-      "bytes": 8722,
-      "sha256": "f4cff318777b9fe8c486b35e88b66ca11c3270502db3b13077985111ed113d8f"
+      "bytes": 8844,
+      "sha256": "cb80162021c2825b97ddd246bc3950070ad79cd6a7894ffb5e0ca6747d675e82"
+    },
+    {
+      "path": "site/layout.html",
+      "bytes": 3823,
+      "sha256": "593ae69d185e10a330f184c26eed93847de40edb51b6b280be78a9224da0a1c0"
+    },
+    {
+      "path": "site/pages.json",
+      "bytes": 2617,
+      "sha256": "40cd200345c911a26974097f2a71b9da716d8d09f7a368125c636e3aca211115"
+    },
+    {
+      "path": "site/pages/404.html",
+      "bytes": 213,
+      "sha256": "1520cfb7282bd0f31c20ac812d6d3e76879f0dd821d29ba0548f3120de5a2918"
+    },
+    {
+      "path": "site/pages/about.html",
+      "bytes": 3659,
+      "sha256": "2484e57e80d87cbe472ae7bd2b71cfcaa5f3e34b33024417c830daf26fee0f59"
+    },
+    {
+      "path": "site/pages/accessibility.html",
+      "bytes": 543,
+      "sha256": "1d57c94652f678c206c892215aa0d7976a1b1f7efe6359b0d9bea6d2d2f5bb2d"
+    },
+    {
+      "path": "site/pages/contact.html",
+      "bytes": 2786,
+      "sha256": "0a630360e877cba8f1dd979928e88066e742a2057b40a528b4f8b119f1e75bc7"
+    },
+    {
+      "path": "site/pages/documents.html",
+      "bytes": 6255,
+      "sha256": "e32f43c0f3111e9ceb874d5a3c3d006c0d607a8605c55f879a0e4be5769cae91"
+    },
+    {
+      "path": "site/pages/families.html",
+      "bytes": 6063,
+      "sha256": "2d979e39824cea3b682a336579f6932ac3c8c384106a3918f1a4a844a3008396"
+    },
+    {
+      "path": "site/pages/index.html",
+      "bytes": 11052,
+      "sha256": "4e92a2485f172574ce6c25bb16a3799a7d3cd699a1f81f53a36af9e00e42d260"
+    },
+    {
+      "path": "site/pages/life.html",
+      "bytes": 6822,
+      "sha256": "8d6426d6a6ab7ae957562a597262fedf8cbd7db800abca3a757cee4c2b054018"
+    },
+    {
+      "path": "site/pages/privacy.html",
+      "bytes": 1287,
+      "sha256": "f01cb06d81f645d6b91c92260e72244415d1e1dad18886d7384c0e8ba62198c8"
+    },
+    {
+      "path": "site/pages/referrals.html",
+      "bytes": 2785,
+      "sha256": "5ba1c02958f7e2b7f644fd2ef93f1075199580a594906eea06c23eebd290ed54"
+    },
+    {
+      "path": "site/pages/reviews.html",
+      "bytes": 2090,
+      "sha256": "0385013a8cd083211af08c67e9afbac9549fb4f1e94324f5d97ce5b0f9a471a7"
+    },
+    {
+      "path": "site/pages/services.html",
+      "bytes": 4352,
+      "sha256": "bb0b7132ef9997afbcb66870506736c7463792b422b2007c050f8dea1d77b566"
     },
     {
       "path": "sitemap.xml",
@@ -339,6 +414,11 @@
       "sha256": "d7a5498e9b6bf4bee627d6d304724d8df230b4636a236fb010cca78f622f4868"
     },
     {
+      "path": "tests/pages.test.js",
+      "bytes": 1050,
+      "sha256": "ccbc9fce7881312aac61f080c435f96fd3fbd7e902d4211ea6e6ae07435e4152"
+    },
+    {
       "path": "tests/persistence.test.js",
       "bytes": 3540,
       "sha256": "16cc6b22a202775686f2799208c4690cd33169ccd5046a713f9ada0de2e67286"
@@ -364,5 +444,5 @@
       "sha256": "5b3237561743f9ecea676e456609a06f0bb6a6e596236ed9809abb119cfe014f"
     }
   ],
-  "totalFiles": 72
+  "totalFiles": 88
 }
